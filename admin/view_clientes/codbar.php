@@ -8,7 +8,7 @@
     <script language="javascript">
 function imprimir()
 { 
-    if ((navigator.appName == "Netscape")) {
+  if ((navigator.appName == "Netscape")) {
         window.print() ;
        }else{            
      var WebBrowser = '<OBJECT ID="WebBrowser1" WIDTH=0 HEIGHT=0 CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>';
@@ -19,61 +19,112 @@ function imprimir()
      		 
 }
 </script>
+
 </head>
 
 <body onload="imprimir();">
-  <div align="center"><?php echo $_GET['cod'];?></div>
+  <div align="center"><?php echo $_GET['nombre'];?></div>
+<table>
+<tr>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
 
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
-   <svg id="barcode"></svg>
+</tr>
+<tr>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+</tr>
+<tr>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
+<th><label>$<?php echo $_GET['cost'];?></label></th>
 
-    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.3/dist/JsBarcode.all.min.js"></script>
-    <script>
-  
-     JsBarcode("#barcode", "<?php echo $_GET['cod'];?>", {
+</tr>
+<tr>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+<td><svg id="barcode"></svg></td>
+</tr>
+</table>  
+
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.3/dist/JsBarcode.all.min.js"></script>
+<script>  
+  JsBarcode("#barcode", "<?php echo $_GET['cod'];?>", {
   format: "codabar",
-  width:"2",
-  height:"25"
+ // width:"3",
+  height:"30",
+  displayValue:false
 });
-    </script>
+</script>
 </body>
-
 </html>

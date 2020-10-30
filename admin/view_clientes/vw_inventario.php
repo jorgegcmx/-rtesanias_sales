@@ -35,7 +35,7 @@
                       <img src="img/qr.png" width="20px"  height="20px" >
                     </button>
                     </form>                   
-                    <a type="button"  href="codbar.php?cod=<?php echo  $fil->idarticulos.''.$fil->codigo; ?>&nombre=<?php echo $fil->nombrearticulo; ?>">
+                    <a type="button"  href="codbar.php?cod=<?php echo  $fil->idarticulos.''.$fil->codigo; ?>&nombre=<?php echo $fil->nombrearticulo; ?>&cost=<?php echo $fil->precio_menudeo; ?>">
                     <img src="img/barcode.png" width="30px"  height="20px">
                    </a>                                               
                     </div> 

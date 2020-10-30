@@ -72,12 +72,11 @@ $pedido = $pedidos->get_listapedidos_print($idclientes,$idpedido);
         </body>
         </html> ';
 
-
-  $emails = $fil->email;
+  $emails = trim($fil->email);
   $email = new \SendGrid\Mail\Mail();
   $email->setFrom("inmpsaemail@gmail.com", "Ticket de Compra");
   $email->setSubject("Ticket de Compra");
-  $email->addTo($emails, "Alumno");
+  $email->addTo($emails, "Ticket");
   $email->addContent("text/plain", "and easy to do anywhere, even with PHP");
   $email->addContent(
       "text/html",   $contenido  );
@@ -88,7 +87,14 @@ $pedido = $pedidos->get_listapedidos_print($idclientes,$idpedido);
       $response->headers();
       $response->body() . "\n";
      // header('Location: vw_ventas.php?success');
+
+  } catch (Exception $e) {
+      echo 'Caught exception: ' . $e->getMessage() . "\n";
+  } 
+}
+
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -115,13 +121,3 @@ $pedido = $pedidos->get_listapedidos_print($idclientes,$idpedido);
 </script>
 </body>
 </html>
-
-
-<?php
-  } catch (Exception $e) {
-      echo 'Caught exception: ' . $e->getMessage() . "\n";
-  } 
-}
-
-?>
-
