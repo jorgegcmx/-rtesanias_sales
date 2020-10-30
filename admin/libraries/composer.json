@@ -1,0 +1,12 @@
+{
+    "name": "administrador/libraries",
+    "authors": [
+        {
+            "name": "Jorge Antonio",
+            "email": "jorgegcmx@gmail.com"
+        }
+    ],
+    "require": {
+        "dompdf/dompdf": "^0.8.6"
+    }
+}
