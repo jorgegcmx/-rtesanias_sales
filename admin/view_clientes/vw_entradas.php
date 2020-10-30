@@ -50,8 +50,8 @@
                 <td><?php  echo date("d-m-Y", strtotime($fil->fecha));  ?></td>  
                 <td>$<?php echo $fil->total; ?></b></td>                       
                 <td>
-                <a href="#" data-toggle="modal" data-target="#exampleModal<?php echo $fil->idpedidos; ?>"><i class="fa fa-eye"></i></a>
-                <a href="printPDF.php?idpedido=<?php echo $fil->idpedidos; ?>&idclientes=<?php echo $idclientes; ?>&modulo=in"  ><i class="fa fa-print"></i ></a>     
+                <a href="#" data-toggle="modal" data-target="#exampleModal<?php echo $fil->idpedidos; ?>" class="btn btn-outline-info"><i class="fa fa-eye"></i></a>
+                <a href="printPDF.php?idpedido=<?php echo $fil->idpedidos; ?>&idclientes=<?php echo $idclientes; ?>&modulo=in" class="btn btn-outline-info" ><i class="fa fa-print"></i ></a>     
                 </td>
                 </tr> 
                 <!-- Modal Edit users -->

@@ -29,7 +29,6 @@ $contacto=$_SESSION['telefono_admin'];
   <link href="../css/carousel.css" rel="stylesheet">
   <link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet">
 
-
 </head>
 <body>
   <header>
@@ -67,7 +66,7 @@ $contacto=$_SESSION['telefono_admin'];
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pedidos Registrados</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="vw_pedidos.php">Tus Pedidos</a>
-          <a class="dropdown-item" href="#">Pedidos de Sucursal</a>    
+          <!--a class="dropdown-item" href="#">Pedidos de Sucursal</a-->    
         </div>
       </li>
           <li class="nav-item active">

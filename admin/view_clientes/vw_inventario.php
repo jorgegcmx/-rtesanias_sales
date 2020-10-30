@@ -31,13 +31,12 @@
                     <input type="hidden" name="id" value="http://tucatalogoweb.com/admin/articulos/addsale.php?txtidproductos=<?php echo $fil->idarticulos;?>@txtimg=<?php echo $fil->img; ?>@txtnombre=<?php echo $fil->nombrearticulo; ?>@txtprecio=<?php echo $fil->precio_menudeo; ?>">
                     <input type="hidden" name="costo" value="<?php echo $fil->precio_menudeo; ?>">
                     <input type="hidden" name="nombre" value="<?php echo $fil->nombrearticulo; ?>">
-                    <button  type="submit"> 
-                      <img src="img/qr.png" >
+                    <button  type="submit"  > 
+                      <img src="img/qr.png" width="20px"  height="20px" >
                     </button>
-                    </form> 
-                  
-                    <a type="button" href="codbar.php?cod=<?php echo  $fil->idarticulos.''.$fil->codigo; ?>&nombre=<?php echo $fil->nombrearticulo; ?>">
-                    <img src="img/barcode.png">
+                    </form>                   
+                    <a type="button"  href="codbar.php?cod=<?php echo  $fil->idarticulos.''.$fil->codigo; ?>&nombre=<?php echo $fil->nombrearticulo; ?>">
+                    <img src="img/barcode.png" width="30px"  height="20px">
                    </a>                                               
                     </div> 
                 </td>               
@@ -55,8 +54,7 @@
                 $stock = $cant_stock->get_stock($idclientes,$fil->idarticulos);
                 while($st = $stock->fetchObject()){ 
                    $stock_count = $st->cantidad;
-                }
-                
+                }                
                 if($stock_count ===0){
                   echo "<b style='color:red;'>0</b>";
                 }else{

@@ -47,9 +47,10 @@
                 <tr> 
                 <td>#<?php echo $fil->counter; ?></td> 
                 <td>
-                <a  id="confirmacion" href="../pedidos/borrar.php?id=<?php echo $fil->idpedidos ?>" >
-                <i class="fa fa-trash-o"></i >
-                </a>
+                   <form class="confirmacion" name="form_delete" action="../pedidos/borrar.php" method="GET">
+                      <input type="hidden" name="id" value="<?php echo $fil->idpedidos ?>">
+                      <button type="submit" class="btn btn-outline-danger"><i class="fa fa-trash-o"></i ></button>
+                  </form>
                 <?php 
                 if($fil->status=='P'){
                  // echo '<span class="btn btn-warning my-2 my-sm-0" >Pendiente</span>';
@@ -94,11 +95,11 @@
                 </ul>
                 </td>                       
                 <td>
-                <a href="#" data-toggle="modal" data-target="#exampleModal<?php echo $fil->idpedidos; ?>"><i class="fa fa-eye"></i></a>
-                <a href="printPDF.php?idpedido=<?php echo $fil->idpedidos; ?>&idclientes=<?php echo $idclientes; ?>&modulo=pe"  ><i class="fa fa-print"></i ></a>     
+                <a href="#" data-toggle="modal" data-target="#exampleModal<?php echo $fil->idpedidos; ?>" class="btn btn-outline-info"><i class="fa fa-eye"></i></a>
+                <a href="printPDF.php?idpedido=<?php echo $fil->idpedidos; ?>&idclientes=<?php echo $idclientes; ?>&modulo=pe" class="btn btn-outline-info" ><i class="fa fa-print"></i ></a>     
                 </td>
                  <td>
-                <a href="#" data-toggle="modal" data-target="#exampleModalPago<?php echo $fil->idpedidos; ?>">$+</a>
+                <a href="#" data-toggle="modal" data-target="#exampleModalPago<?php echo $fil->idpedidos; ?>" class="btn btn-outline-info">$+</a>
                 </td>
                 </tr> 
                 <!-- Modal add pay-->

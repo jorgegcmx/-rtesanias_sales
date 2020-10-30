@@ -87,7 +87,37 @@ $pedido = $pedidos->get_listapedidos_print($idclientes,$idpedido);
       $response->statusCode() . "\n";
       $response->headers();
       $response->body() . "\n";
-      header('Location: vw_ventas.php?success');
+     // header('Location: vw_ventas.php?success');
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script type='text/javascript'>
+                
+  Swal.fire({
+      title: 'Ticket enviado!',
+      text: 'Continuar',
+      icon: 'success',
+      confirmButtonText: 'ok'    
+     }).then(resultado => {
+        if (resultado.value) {
+            let nombre = resultado.value;           
+            window.location.href='vw_ventas.php';
+        }
+    });
+
+</script>
+</body>
+</html>
+
+
+<?php
   } catch (Exception $e) {
       echo 'Caught exception: ' . $e->getMessage() . "\n";
   } 

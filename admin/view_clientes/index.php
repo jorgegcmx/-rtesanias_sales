@@ -151,8 +151,7 @@
           <span><b>Total</b></span>
           <strong >$ <?php echo $subtotal + $IVA;  ?></strong>
           </li>  
-          </div>
-             
+          </div>            
         
          <form action='../pedidos/addpedidos.php' method='post'>
           <li class="list-group-item d-flex justify-content-between">  
@@ -196,5 +195,5 @@
       </div>
       </div>
       </div><!-- /.row -->   
-
+<script src="../js/focus.js"></script>
 <?php require_once "footer.php"; ?>

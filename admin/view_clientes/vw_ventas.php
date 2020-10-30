@@ -62,9 +62,9 @@
                 <td>$<?php echo $fil->iva; ?></b></td> 
                 <td>$<?php echo $fil->total; ?></b></td>                       
                 <td>
-                <a href="#" data-toggle="modal" data-target="#exampleModal<?php echo $fil->idpedidos; ?>"><i class="fa fa-eye"></i></a>
-                <a href="printPDF.php?idpedido=<?php echo $fil->idpedidos; ?>&idclientes=<?php echo $idclientes; ?>"  ><i class="fa fa-print"></i ></a>     
-                <a href="sendemail.php?idpedido=<?php echo $fil->idpedidos; ?>&idclientes=<?php echo $idclientes; ?>"  ><i class="fa fa-send"></i ></a>     
+                <a href="#" data-toggle="modal" data-target="#exampleModal<?php echo $fil->idpedidos; ?>" class="btn btn-outline-info"><i class="fa fa-eye"></i></a>
+                <a href="printPDF.php?idpedido=<?php echo $fil->idpedidos; ?>&idclientes=<?php echo $idclientes; ?>" class="btn btn-outline-info" ><i class="fa fa-print"></i ></a>     
+                <a href="sendemail.php?idpedido=<?php echo $fil->idpedidos; ?>&idclientes=<?php echo $idclientes; ?>" class="btn btn-outline-info" ><i class="fa fa-send"></i ></a>     
                 </td>
                 </tr> 
                 <!-- Modal Edit users -->

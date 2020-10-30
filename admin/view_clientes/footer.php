@@ -22,30 +22,39 @@
 </script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 <script>
 $(document).ready(function() {
     $('#example').DataTable();
 } );
 </script>
+
 <script>
-    $(document).on("click", "#confirmacion", function (e) {
-        var r = confirm("Esta seguro de eliminar el registro? esta acción no se podra reversar!");
-        if (r == true) {
-            window.location.href = link;
-        } else {
+    $('.confirmacion').click(function(e) {  
+      e.preventDefault();
+      Swal.fire({
+      title: 'Esta seguro de eliminar el registro? esta acción no se podra reversar!',
+      text: 'Continuar',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Aceptar',      
+      cancelButtonText: "Cancelar",
+     }).then(resultado => {
+        if (resultado.value) {    
+           const v = resultado.value
+           console.log(v);           
+            $( ".confirmacion" ).submit();
+        } else {            
             return false;
+           
         }
     });
+});
 </script>
 
 
 
-<script type="text/javascript">
-    function ponleFocus(){
-    document.getElementById("codigo").focus();
-}
-ponleFocus();
-</script>
 
 <script type="text/javascript">
     function showContent() {
@@ -170,7 +179,5 @@ ponleFocus();
            }
        });
      });
-
-
 </script>
 </html>

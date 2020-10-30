@@ -49,7 +49,31 @@ unset($_SESSION['idpedido']);
 unset($_SESSION['importe']);
 unset($_SESSION['tipo']);
 
-echo '<script type="text/javascript">
-			     alert("Guardado Correctamente");
-				 window.location.href="../view_clientes/vw_addpedidos.php";
-	 </script>';
+
+     
+?>     
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script type='text/javascript'>
+                
+  Swal.fire({
+      title: 'Pedido Guardado',
+      text: 'Continuar',
+      icon: 'success',
+      confirmButtonText: 'ok'    
+     }).then(resultado => {
+        if (resultado.value) {
+            let nombre = resultado.value;           
+            window.location.href='../view_clientes/vw_pedidos.php';
+        }
+    });
+</script>
+</body>
+</html>

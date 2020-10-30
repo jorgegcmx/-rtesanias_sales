@@ -41,8 +41,6 @@ if (isset($_POST["tipo"]) == 0) {
     $iva = $_POST["iva"];
 }
 
-
-
 $contador = new Classpedidos();
 $conta = $contador->get_pedido_cunter($idcliente, $modulo);
 while ($cont = $conta->fetchObject()) {
@@ -91,17 +89,22 @@ if($pagacon != ''){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 </head>
-
 <body>
- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script type='text/javascript'>
                 
   Swal.fire({
       title: 'Cambio: <?php echo$cambio; ?>',
       text: 'Continuar',
       icon: 'success',
-      confirmButtonText: 'ok'
-  })   
+      confirmButtonText: 'ok'    
+     }).then(resultado => {
+        if (resultado.value) {
+            let nombre = resultado.value;
+            //console.log("Hola, " + nombre);
+            window.location.href='../view_clientes/vw_ventas.php';
+        }
+    });
 </script>
 </body>
 </html>
