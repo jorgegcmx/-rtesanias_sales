@@ -62,7 +62,6 @@ unset($_SESSION['idpedido']);
 unset($_SESSION['importe']);
 unset($_SESSION['tipo']);
 
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -81,9 +80,7 @@ unset($_SESSION['tipo']);
       confirmButtonText: 'ok'    
      }).then(resultado => {
         if (resultado.value) {
-            let nombre = resultado.value;
-            //console.log("Hola, " + nombre);
-            window.location.href='../view_clientes/vw_entradas.php';
+           window.location.href='../view_clientes/vw_entradas.php';
         }
     });
 </script>
