@@ -1,6 +1,5 @@
 <?php
-//$API_KEY = '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';
-//require '../libraries/Sendgrid/vendor/autoload.php'; // If you're using Composer (recommended)
+
 // Comment out the above line if not using Composer
 // https://github.com/sendgrid/sendgrid-php/releases
 
