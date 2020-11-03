@@ -28,11 +28,15 @@ $contacto=$_SESSION['telefono_admin'];
     <!-- Custom styles for this template -->
   <link href="../css/carousel.css" rel="stylesheet">
   <link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../../img/logo_top.png">
 
 </head>
 <body>
   <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">
+          <img src="../../img/logo_top.png" alt="ecologia" width="30px" higth="30px">
+        </a>
       <a class="navbar-brand" href="#">@rtesanias</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,30 +49,22 @@ $contacto=$_SESSION['telefono_admin'];
             <i class="fa fa-building-o" aria-hidden="true"></i>
             Almacen</a>
           </li>   
-          <li class="nav-item active">
-            <a class="nav-link" href="vw_inventario.php"><span class="sr-only"></span>
-            <i class="fa fa-bar-chart" aria-hidden="true"></i>
-            Inventario
-            </a>
-          </li>  
-          <li class="nav-item active">
-            <a class="nav-link" href="vw_entradas.php"><span class="sr-only"></span>
-            <i class="fa fa-sign-in" aria-hidden="true"></i>
-            Entradas</a>
-          </li>         
-          <li class="nav-item active">
-            <a class="nav-link" href="vw_addpedidos.php"><span class="sr-only"></span>
-            <i class="fa fa-file-o" aria-hidden="true"></i>
-             Generar Pedido</a>
-          </li>        
-         
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pedidos Registrados</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="vw_pedidos.php">Tus Pedidos</a>
-          <!--a class="dropdown-item" href="#">Pedidos de Sucursal</a-->    
-        </div>
-      </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Inventario</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="vw_inventario.php">Generar Movimineto</a>
+              <a class="dropdown-item" href="vw_entradas.php">Entradas</a> 
+              <a class="dropdown-item" href="vw_salidas.php">Salidas</a>           
+            </div>
+          </li>   
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pedidos</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="vw_addpedidos.php">Registrar</a>
+              <a class="dropdown-item" href="vw_pedidos.php">Pedidos Registrados</a>
+              <!--a class="dropdown-item" href="#">Pedidos de Sucursal</a-->    
+            </div>
+          </li>
           <li class="nav-item active">
             <a class="nav-link" href="vw_ventas.php"><span class="sr-only"></span>
             <i class="fa fa-list" aria-hidden="true"></i>

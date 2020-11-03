@@ -23,7 +23,7 @@
         </div>   
         <div class="d-flex justify-content-between align-items-center w-100">
               <div><b>Nombre: </b><?php echo $fil->razon_social; ?></div>                   
-              <a href="../clientes/borrar_cliente.php?id=<?php echo $fil->idclientes; ?>"><i class="fa fa-trash-o"></i ></a>                       
+              <a href="../clientes/borrar_cliente.php?id=<?php echo $fil->idclientes; ?>" class="confirmacion"><i class="fa fa-trash-o"></i ></a>                       
         </div>
         <div class="d-flex justify-content-between align-items-center w-100">     
               <div><b> Pais: </b><?php echo $fil->pais; ?></div>                           
@@ -33,9 +33,13 @@
       <span class="d-block"><b>Estado: </b>  <?php echo $fil->estado; ?></span>
       <span class="d-block"><b>Dirección: </b>  <?php echo $fil->direccion; ?></span>
       <span class="d-block"><b>Telefono: </b>  <?php echo $fil->telefono; ?></span>
+      <div class="d-flex justify-content-between align-items-center w-100">    
+      <a href="vw_ventas.php?idcliente=<?php echo $fil->idclientes; ?>" class="btn btn-outline-success">Ventas</a>
+
+      </div>
       </div>
      </div>  
-<!-- Modal-->
+   <!-- Modal-->
   <div class="modal fade" id="exampleModal<?php echo $fil->idclientes; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

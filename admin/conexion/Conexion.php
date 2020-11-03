@@ -8,7 +8,7 @@ private function __construct()
 {
     try
     {
-    $this->con = new PDO("mysql:host=localhost;dbname=sales",'root','');
+    $this->con = new PDO("mysql:host=localhost;dbname=u534490578_ventas",'u534490578_ventas','6^OOg@~dvWf');
         
     $this->con->exec("SET CHARSET SET UTF-8");    
     }

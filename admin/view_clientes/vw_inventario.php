@@ -8,7 +8,7 @@
             <table class="table" id="example">
             <thead>
                 <tr>
-                <th>QR </th>               
+                <th>QR</th>               
                 <th>Imagen</th>
                 <th>Nombre</th>                
                 <th>Menudeo</th>
@@ -28,7 +28,8 @@
                 <td>
                    <div style=" text-align: center"> 
                     <form action="printQR.php" method="get">
-                    <input type="hidden" name="id" value="http://tucatalogoweb.com/admin/articulos/addsale.php?txtidproductos=<?php echo $fil->idarticulos;?>@txtimg=<?php echo $fil->img; ?>@txtnombre=<?php echo $fil->nombrearticulo; ?>@txtprecio=<?php echo $fil->precio_menudeo; ?>">
+                    <!--input type="hidden" name="id" value="http://tucatalogoweb.com/admin/articulos/addsale.php?txtidproductos=<?php echo $fil->idarticulos;?>@txtimg=<?php echo $fil->img; ?>@txtnombre=<?php echo $fil->nombrearticulo; ?>@txtprecio=<?php echo $fil->precio_menudeo; ?>"-->
+                    <input type="hidden" name="id" value="<?php echo  $fil->idarticulos.''.$fil->codigo; ?>">
                     <input type="hidden" name="costo" value="<?php echo $fil->precio_menudeo; ?>">
                     <input type="hidden" name="nombre" value="<?php echo $fil->nombrearticulo; ?>">
                     <button  type="submit"  > 
@@ -37,7 +38,7 @@
                     </form>                   
                     <a type="button"  href="codbar.php?cod=<?php echo  $fil->idarticulos.''.$fil->codigo; ?>&nombre=<?php echo $fil->nombrearticulo; ?>&cost=<?php echo $fil->precio_menudeo; ?>">
                     <img src="img/barcode.png" width="30px"  height="20px">
-                   </a>                                               
+                   </a>                                                
                     </div> 
                 </td>               
                 <td>               
@@ -55,11 +56,13 @@
                 while($st = $stock->fetchObject()){ 
                    $stock_count = $st->cantidad;
                 }                
-                if($stock_count ===0){
+                if($stock_count == 0){
                   echo "<b style='color:red;'>0</b>";
-                }else{
-                  echo "<b>".$stock_count."</b>";
-                }       
+                }elseif($stock_count ==''){
+                 echo "<b style='color:red;'>0</b>";
+                } else{
+                 echo "<b>".$stock_count."</b>";
+                }        
                 ?>  
                  </b>       
                  </div>                 
@@ -148,6 +151,21 @@
           <strong>$ <?php if($total!=0){echo  $subtotal=($total);}else{}  ?></strong>
          </li>        
          <form action='../pedidos/addrecepcion.php' method='post'>
+
+         <li class="list-group-item d-flex justify-content-between">
+         <div class="form-check">
+            <input class="form-check-input" type="radio" name="tipo" id="exampleRadios1" value="1" checked>
+            <label class="form-check-label" for="exampleRadios1">
+              Entrada
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="tipo" id="exampleRadios2" value="0">
+            <label class="form-check-label" for="exampleRadios2">
+              Salida
+            </label>
+          </div>
+        </li>
         <li class="list-group-item d-flex justify-content-between">                	
            <input type='hidden' class='form-control'value='<?php echo $IVA; ?>' name='iva'>
            <input type='hidden' class='form-control'value='IN' name='modulo'>
@@ -168,7 +186,7 @@
        </select>				
         </li>
         <li class="list-group-item d-flex justify-content-between">
-        <input type='submit' class='btn btn-primary'  value='Recibir mercancia'>					
+        <input type='submit' class='btn btn-primary'  value='Guardar'>					
         </li>
         </form> 
         <?php       

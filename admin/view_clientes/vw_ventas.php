@@ -19,7 +19,9 @@
             <table class="table" id="example">
             <thead>
                 <tr>
-                <th>Tipo</th>               
+                <th></th>
+                <th>Tipo</th> 
+                <th>RFC</th>               
                 <th>Venta</th>
                 <th>Cliente</th>
                 <th>email</th>
@@ -36,7 +38,7 @@
             <tbody>
                 <?php 
                  include_once '../pedidos/Classpedidos.php';	
-                 $pedidos = new Classpedidos();       
+                 $pedidos = new Classpedidos();      
                  
                  if(isset($_POST["date1"]) && isset($_POST["date2"])){
                    $date1=$_POST["date1"];
@@ -48,13 +50,19 @@
                   while($fil = $pedido->fetchObject()){  
                 ?>
                 <tr> 
+                <td>  
+                <a href="../pedidos/borrar_venta.php?id=<?php echo $fil->idpedidos ?>" class="btn btn-outline-danger confirmacion" ><i class="fa fa-trash-o"></i ></a>
+                </td>
                 <td><?php 
                 if($fil->status=='NF'){
-                  echo '<span class="btn btn-secondary my-2 my-sm-0" >No Facturado</span>';
+                  echo '<span class="btn btn-secondary my-2 my-sm-0 btn-sm" >No Facturado</span>';
+                }elseif($fil->status=='F'){
+                    echo "<span class='btn btn-warning my-2 my-sm-0 btn-sm'><a href='../pedidos/status.php?idpedidos=".$fil->idpedidos."&status=FA'>1.Por Facturar</a></span>";
                 }else{
-                    echo '<span class="btn btn-warning my-2 my-sm-0">Por Facturar</span>';
+                    echo "<span class='btn btn-primary my-2 my-sm-0 btn-sm'><a href='../pedidos/status.php?idpedidos=".$fil->idpedidos."&status=FA' style='color:white;'>Facturada</a></span>";
                 }                
-                ?></td>                             
+                ?></td> 
+                <td><?php echo $fil->rfc; ?></td>                            
                 <td>#<?php echo $fil->counter; ?></td>  
                 <td><?php echo $fil->nombrecliente; ?></td> 
                 <td><?php echo $fil->email_cliente; ?></td>             
@@ -63,7 +71,7 @@
                 <td>$<?php echo $fil->total; ?></b></td>                       
                 <td>
                 <a href="#" data-toggle="modal" data-target="#exampleModal<?php echo $fil->idpedidos; ?>" class="btn btn-outline-info"><i class="fa fa-eye"></i></a>
-                <a href="printPDF.php?idpedido=<?php echo $fil->idpedidos; ?>&idclientes=<?php echo $idclientes; ?>" class="btn btn-outline-info" ><i class="fa fa-print"></i ></a>     
+                <a href="print_tiket.php?idpedido=<?php echo $fil->idpedidos; ?>&idclientes=<?php echo $idclientes; ?>" class="btn btn-outline-info" ><i class="fa fa-print"></i ></a>     
                 <a href="sendemail.php?idpedido=<?php echo $fil->idpedidos; ?>&idclientes=<?php echo $idclientes; ?>" class="btn btn-outline-info" ><i class="fa fa-send"></i ></a>     
                 </td>
                 </tr> 

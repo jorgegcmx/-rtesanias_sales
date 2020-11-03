@@ -47,10 +47,7 @@
                 <tr> 
                 <td>#<?php echo $fil->counter; ?></td> 
                 <td>
-                   <form class="confirmacion" name="form_delete" action="../pedidos/borrar.php" method="GET">
-                      <input type="hidden" name="id" value="<?php echo $fil->idpedidos ?>">
-                      <button type="submit" class="btn btn-outline-danger"><i class="fa fa-trash-o"></i ></button>
-                  </form>
+                <a href="../pedidos/borrar.php?id=<?php echo $fil->idpedidos ?>" class="btn btn-outline-danger confirmacion" ><i class="fa fa-trash-o"></i ></a>
                 <?php 
                 if($fil->status=='P'){
                  // echo '<span class="btn btn-warning my-2 my-sm-0" >Pendiente</span>';
@@ -82,21 +79,20 @@
                     <?php 
                     if($tot==$itemsaldo){
                     ?>  
-                        <span class="badge badge-success badge-pill">$ <?php echo $tot-$itemsaldo; ?></span>
+                    <span class="badge badge-success badge-pill">$ <?php echo $tot-$itemsaldo; ?></span>
                     <?php 
                     }else{
                     ?>
-                        <span class="badge badge-warning badge-pill">$ <?php echo $tot-$itemsaldo; ?></span>
+                    <span class="badge badge-warning badge-pill">$ <?php echo $tot-$itemsaldo; ?></span>
                     <?php   
                     }
                     ?>
-
                   </li>                 
                 </ul>
                 </td>                       
                 <td>
                 <a href="#" data-toggle="modal" data-target="#exampleModal<?php echo $fil->idpedidos; ?>" class="btn btn-outline-info"><i class="fa fa-eye"></i></a>
-                <a href="printPDF.php?idpedido=<?php echo $fil->idpedidos; ?>&idclientes=<?php echo $idclientes; ?>&modulo=pe" class="btn btn-outline-info" ><i class="fa fa-print"></i ></a>     
+                <a href="print_info.php?idpedido=<?php echo $fil->idpedidos; ?>&idclientes=<?php echo $idclientes; ?>&modulo=pe&nombre=<?php echo $fil->nombrecliente; ?>" class="btn btn-outline-info" ><i class="fa fa-print"></i ></a>     
                 </td>
                  <td>
                 <a href="#" data-toggle="modal" data-target="#exampleModalPago<?php echo $fil->idpedidos; ?>" class="btn btn-outline-info">$+</a>

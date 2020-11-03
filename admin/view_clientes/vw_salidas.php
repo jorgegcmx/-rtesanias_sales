@@ -15,14 +15,14 @@
               <button type="submit" class="btn btn-primary mb-2">Buscar</button>
             </form>
         </div>          
-        <h4 class="border-bottom border-gray pb-2 mb-0">Entrdas</h4> 
+        <h4 class="border-bottom border-gray pb-2 mb-0">Salidas</h4> 
         <div class="table-responsive">
             <table class="table" id="example">
             <thead>
                 <tr>
                 <th></th>
                 <th>Tipo</th> 
-                <th>Entrada</th>
+                <th>Salida</th>
                 <th>Fecha</th>             
                 <th>Total</th>                
                  <th></th>
@@ -35,21 +35,20 @@
                  if(isset($_POST["date1"]) && isset($_POST["date2"])){
                    $date1=$_POST["date1"];
                    $date2=$_POST["date2"];
-                   $pedido = $pedidos->get_listapedidos_fecha_entrada($idclientes,$date1,$date2); 
+                   $pedido = $pedidos->get_listapedidos_fecha_salida($idclientes,$date1,$date2); 
                  }else{
-                   $pedido = $pedidos->get_listapedidos_entrada($idclientes); 
+                   $pedido = $pedidos->get_listapedidos_salida($idclientes); 
                  }
                   while($fil = $pedido->fetchObject()){  
                 ?>
                 <tr> 
-                <td> 
-                <a href="../pedidos/borrar_entrada.php?id=<?php echo $fil->idpedidos ?>&entrada" class="btn btn-outline-danger confirmacion" ><i class="fa fa-trash-o"></i ></a>
-                </td>
                 <td>
-               
+                <a href="../pedidos/borrar_entrada.php?id=<?php echo $fil->idpedidos ?>&salida" class="btn btn-outline-danger confirmacion" ><i class="fa fa-trash-o"></i ></a>
+                </td>
+                <td>               
                 <?php 
-                if($fil->status=='R'){
-                  echo '<span class="btn btn-secondary my-2 my-sm-0" >Entrada Inventario</span>';
+                if($fil->status=='S'){
+                  echo '<span class="btn btn-secondary my-2 my-sm-0" >Salida Inventario</span>';
                 }                
                 ?></td>                             
                 <td>#<?php echo $fil->counter; ?></td>              
@@ -57,7 +56,7 @@
                 <td>$<?php echo $fil->total; ?></b></td>                       
                 <td>
                 <a href="#" data-toggle="modal" data-target="#exampleModal<?php echo $fil->idpedidos; ?>" class="btn btn-outline-info"><i class="fa fa-eye"></i></a>
-                <a href="print_info.php?idpedido=<?php echo $fil->idpedidos; ?>&idclientes=<?php echo $idclientes; ?>&modulo=in&entrada=ok" class="btn btn-outline-info" ><i class="fa fa-print"></i ></a>     
+                <a href="print_info.php?idpedido=<?php echo $fil->idpedidos; ?>&idclientes=<?php echo $idclientes; ?>&modulo=in&salida=ok" class="btn btn-outline-info" ><i class="fa fa-print"></i ></a>     
                 </td>
                 </tr> 
                 <!-- Modal Edit users -->

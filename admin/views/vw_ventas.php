@@ -1,11 +1,13 @@
-<?php require_once "header.php"; ?> 
-<br>
-<div class="row" style="background:#104271">
+<?php require_once "header.php"; 
+$idclientes=$_GET['idcliente'];
+?> 
+<div class="row">
         <div class="col-lg-12">
           <div class="my-3 p-3 bg-white rounded shadow-sm">
         <!-- Button trigger modal -->
         <div align="right">
-          <form class="form-inline" method="POST" action="vw_entradas.php">
+          <form class="form-inline" method="GET" action="vw_ventas.php">
+               <input type="hidden" class="form-control" name="idcliente" value="<?php echo $idclientes; ?>" >
             <div class="form-group mx-sm-3 mb-2">
                 <input type="date" class="form-control" name="date1" required >
               </div>
@@ -15,49 +17,65 @@
               <button type="submit" class="btn btn-primary mb-2">Buscar</button>
             </form>
         </div>          
-        <h4 class="border-bottom border-gray pb-2 mb-0">Entrdas</h4> 
+        <h4 class="border-bottom border-gray pb-2 mb-0">Ventas</h4> 
         <div class="table-responsive">
             <table class="table" id="example">
             <thead>
                 <tr>
-                <th></th>
+                
                 <th>Tipo</th> 
-                <th>Entrada</th>
-                <th>Fecha</th>             
+                <th>RFC</th>              
+                <th>Venta</th>
+                <th>Cliente</th>
+                <th>email</th>
+                <th>Fecha</th>
+                <th>IVA</th>
                 <th>Total</th>                
-                 <th></th>
+                 <th><?php 
+                 if(isset($_GET['success'])){
+                   echo " <i class='fa fa-envelope-o'style='background:rgb(40,180,99); color:#fff; margin:2px;' aria-hidden='true'> Envio exitoso</i>"; 
+                 }
+                 ?></th>
                 </tr>
             </thead>
             <tbody>
                 <?php 
                  include_once '../pedidos/Classpedidos.php';	
-                 $pedidos = new Classpedidos();               
-                 if(isset($_POST["date1"]) && isset($_POST["date2"])){
-                   $date1=$_POST["date1"];
-                   $date2=$_POST["date2"];
-                   $pedido = $pedidos->get_listapedidos_fecha_entrada($idclientes,$date1,$date2); 
+                 $pedidos = new Classpedidos();      
+                 $suma=0;
+                 $reporte=0;
+                 if(isset($_GET["date1"]) && isset($_GET["date2"])){
+                   $date1=$_GET["date1"];
+                   $date2=$_GET["date2"];
+                   $pedido = $pedidos->get_listapedidos_fecha($idclientes,$date1,$date2); 
+                   $reporte=1;
                  }else{
-                   $pedido = $pedidos->get_listapedidos_entrada($idclientes); 
+                  $pedido = $pedidos->get_listapedidos($idclientes); 
                  }
-                  while($fil = $pedido->fetchObject()){  
+                  while($fil = $pedido->fetchObject()){
+                  $suma=$suma + $fil->total;     
                 ?>
                 <tr> 
-                <td> 
-                <a href="../pedidos/borrar_entrada.php?id=<?php echo $fil->idpedidos ?>&entrada" class="btn btn-outline-danger confirmacion" ><i class="fa fa-trash-o"></i ></a>
-                </td>
-                <td>
                
-                <?php 
-                if($fil->status=='R'){
-                  echo '<span class="btn btn-secondary my-2 my-sm-0" >Entrada Inventario</span>';
-                }                
-                ?></td>                             
-                <td>#<?php echo $fil->counter; ?></td>              
-                <td><?php  echo date("d-m-Y", strtotime($fil->fecha));  ?></td>  
+                <td><?php 
+                if($fil->status=='NF'){
+                    echo '<span class="btn btn-secondary my-2 my-sm-0 btn-sm" >No Facturado</span>';
+                  }elseif($fil->status=='F'){
+                      echo "<span class='btn btn-warning my-2 my-sm-0 btn-sm'><a href='../pedidos/status.php?idpedidos=".$fil->idpedidos."&status=FA'>1.Por Facturar</a></span>";
+                  }else{
+                      echo "<span class='btn btn-primary my-2 my-sm-0 btn-sm'><a href='../pedidos/status.php?idpedidos=".$fil->idpedidos."&status=FA' style='color:white;'>Facturada</a></span>";
+                  }                 
+                ?>
+                </td> 
+                <td><?php echo $fil->rfc; ?></td>                             
+                <td>#<?php echo $fil->counter; ?></td>  
+                <td><?php echo $fil->nombrecliente; ?></td> 
+                <td><?php echo $fil->email_cliente; ?></td>             
+                <td><?php echo date("d-m-Y", strtotime($fil->fecha));  ?></td>
+                <td>$<?php echo $fil->iva; ?></b></td> 
                 <td>$<?php echo $fil->total; ?></b></td>                       
                 <td>
                 <a href="#" data-toggle="modal" data-target="#exampleModal<?php echo $fil->idpedidos; ?>" class="btn btn-outline-info"><i class="fa fa-eye"></i></a>
-                <a href="print_info.php?idpedido=<?php echo $fil->idpedidos; ?>&idclientes=<?php echo $idclientes; ?>&modulo=in&entrada=ok" class="btn btn-outline-info" ><i class="fa fa-print"></i ></a>     
                 </td>
                 </tr> 
                 <!-- Modal Edit users -->
@@ -92,13 +110,21 @@
                             <b>$<?php echo $det->costouni; ?></b>
                             <b>$<?php echo $det->subtotal; ?></b>
                            </li>                    
-                           <?php } ?>                          
+                           <?php } ?>
+                           <li class="list-group-item d-flex justify-content-between">
+                           <b>IVA:</b>
+                           <b>$<?php echo $fil->iva; ?></b>                         
+                           </li>
+                           <li class="list-group-item d-flex justify-content-between">
+                           <b>SubTotal:</b>
+                           <b>$<?php echo $fil->total-$fil->iva; ?></b>                         
+                           </li>
                            <li class="list-group-item d-flex justify-content-between">
                            <b>Total:</b>
                            <b>$<?php echo $fil->total; ?></b>                         
                            </li>
                           </ul>  
-                       </div>
+                        </div>
                        <div class="modal-footer">                        
                       </div>
                     </div>
@@ -108,6 +134,12 @@
              <?php } ?> 
             </tbody>
             </table>
+            
+            <?php 
+            if($reporte==1){
+                echo "<h1>EL Total de Ventas: $".$suma."</h1>"; 
+            }                     
+            ?>
             </div>
           </div>
         </div><!-- /.col-lg-4 -->

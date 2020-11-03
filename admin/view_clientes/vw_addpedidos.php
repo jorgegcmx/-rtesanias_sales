@@ -81,12 +81,13 @@
                 $stock = $cant_stock->get_stock($idclientes,$fil->idarticulos);
                 while($st = $stock->fetchObject()){ 
                    $stock_count = $st->cantidad;
-                }
-                
-                if($stock_count ===0){
+                }                
+                if($stock_count == 0){
                   echo "<b style='color:red;'>0</b>";
-                }else{
-                  echo "<b>".$stock_count."</b>";
+                }elseif($stock_count ==''){
+                 echo "<b style='color:red;'>0</b>";
+                } else{
+                 echo "<b>".$stock_count."</b>";
                 }    
                 ?>  
                  </b>       

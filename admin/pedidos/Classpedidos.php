@@ -263,7 +263,7 @@ class Classpedidos
     {
         try
         {
-            $sql = "SELECT * FROM pedidos WHERE idcliente =?  and modulo='IN' order by idpedidos desc";
+            $sql = "SELECT * FROM pedidos WHERE idcliente =?  and modulo='IN'and status='R' order by idpedidos desc";
 
             $consulta = $this->con->prepare($sql);
             $consulta->bindParam(1, $idcliente);
@@ -285,7 +285,53 @@ class Classpedidos
     {
         try
         {
-            $sql = "SELECT * FROM pedidos WHERE idcliente =? and fecha between ? and ? and modulo='IN' order by idpedidos desc";
+            $sql = "SELECT * FROM pedidos WHERE idcliente =? and fecha between ? and ? and modulo='IN' and status='R' order by idpedidos desc";
+
+            $consulta = $this->con->prepare($sql);
+            $consulta->bindParam(1, $idcliente);
+            $consulta->bindParam(2, $date1);
+            $consulta->bindParam(3, $date2);
+
+            $consulta->execute();
+            $this->con = null;
+
+            if ($consulta->rowCount() > 0) {
+                return $consulta;
+            } else {
+                return $consulta;
+            } //fin else
+        } catch (PDOExeption $e) {
+            print "Error:" . $e->getmessage();
+        }
+    }
+
+    public function get_listapedidos_salida($idcliente)
+    {
+        try
+        {
+            $sql = "SELECT * FROM pedidos WHERE idcliente =?  and modulo='IN' and status='S' order by idpedidos desc";
+
+            $consulta = $this->con->prepare($sql);
+            $consulta->bindParam(1, $idcliente);
+
+            $consulta->execute();
+            $this->con = null;
+
+            if ($consulta->rowCount() > 0) {
+                return $consulta;
+            } else {
+                return $consulta;
+            } //fin else
+        } catch (PDOExeption $e) {
+            print "Error:" . $e->getmessage();
+        }
+    }
+
+    public function get_listapedidos_fecha_salida($idcliente, $date1, $date2)
+    {
+        try
+        {
+            $sql = "SELECT * FROM pedidos WHERE idcliente =? and fecha between ? and ? and modulo='IN' and status='S' order by idpedidos desc";
 
             $consulta = $this->con->prepare($sql);
             $consulta->bindParam(1, $idcliente);

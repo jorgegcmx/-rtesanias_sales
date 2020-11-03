@@ -1,9 +1,9 @@
 <?php require_once "header.php"; ?> 
 
 <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-10">
           <div class="my-3 p-3 bg-white rounded shadow-sm">
-        <!-- Button trigger modal -->
+     
         <div align="right">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus" aria-hidden="true"></i> Agregar nueva pieza</button>
         </div>          
@@ -11,8 +11,8 @@
         <div class="table-responsive">
             <table class="table" id="example">
             <thead>
-                <tr>
-                <th>QR</th>
+                <tr>    
+                <th>Estilo</th>            
                 <th>Codigo</th>
                 <th>Imagen</th>
                 <th>Nombre</th>
@@ -26,27 +26,20 @@
                 <?php 
                  include_once '../articulos/Classe.php';	
                  $articulos = new Classe();
-                 $articulo = $articulos->get_articulo($idadmin);
+
+                  if(isset($_GET['idcat'])){
+                    $idcat=$_GET['idcat'];
+                    $articulo = $articulos->get_articulo_categoria($idadmin,$idcat); 
+                  }else{
+                    $articulo = $articulos->get_articulo($idadmin); 
+                  }                              
+
+
                  while($fil = $articulo->fetchObject()){  
                 ?>
                 <tr>
-                <td>
-                <div style=" text-align: center">                                                 
-
-                    <?php
-                    $ourParamId='localhost:8090/admin/articulos/addsale.php?txtidproductos='.$fil->idarticulos.'@txtimg='.$fil->img.'@txtnombre='.$fil->nombrearticulo.'@txtprecio='.$fil->precio_menudeo.'';
-                    echo '<img width="50px" height="50px"  src="QR.php?id='.$ourParamId.'" alt="'.$fil->nombrearticulo.'" title="'.$fil->nombrearticulo.'"/>';
-                    ?>   
-                    <form action="printQR.php" method="get">
-                    <input type="hidden" name="id" value="http://tucatalogoweb.com/admin/articulos/addsale.php?txtidproductos=<?php echo $fil->idarticulos;?>@txtimg=<?php echo $fil->img; ?>@txtnombre=<?php echo $fil->nombrearticulo; ?>@txtprecio=<?php echo $fil->precio_menudeo; ?>">
-                    <input type="hidden" name="costo" value="<?php echo $fil->precio_menudeo; ?>">
-                    <input type="hidden" name="nombre" value="<?php echo $fil->nombrearticulo; ?>">
-                    <button class="badge badge-gradient-info" type="submit">Print QR</button>
-                    </form>                                                  
-                    </div> 
-
-                    </td>
-                    <td><?php echo $fil->codigo; ?> </td>
+                    <td><b><?php echo $fil->nombre; ?></b></td>
+                    <td><?php echo $fil->idarticulos; ?><?php echo $fil->codigo; ?></td>
                     <td>               
                     <img src="../articulos/<?php echo $fil->img; ?>" class="rounded" width="150px"  height="90px" >
                     </td>
@@ -56,7 +49,7 @@
                     <td><?php echo $fil->descripcion; ?></td>
                     <td>
                     <a href="#" data-toggle="modal" data-target="#exampleModal<?php echo $fil->idarticulos; ?>"><i class="fa fa-pencil"></i></a>
-                    <a href="../articulos/borrar.php?id=<?php echo $fil->idarticulos; ?>&img=<?php echo $fil->img; ?>"  id="confirmacion"><i class="fa fa-trash-o"></i ></a>     
+                    <a href="../articulos/borrar.php?id=<?php echo $fil->idarticulos; ?>&img=<?php echo $fil->img; ?>"  class="confirmacion"><i class="fa fa-trash-o"></i ></a>     
                     </td>
                     </tr> 
 
@@ -148,7 +141,26 @@
             </table>
             </div>
           </div>
-        </div><!-- /.col-lg-4 -->
+        </div><!-- /.col-lg-12 -->
+        
+        <div class="col-lg-2">  
+        <br>
+        <br> 
+        <br>          
+        <h4 class="border-bottom border-gray pb-2 mb-0">Estilos</h4> 
+        <div class="table-responsive">
+        <ul class="list-group">
+             <?php                 
+                  $categorias = new Classe();                                         
+                  $categoria = $categorias->get_categorias($idadmin);                             
+                   while($fila = $categoria->fetchObject()){  
+                ?>
+                 <li class="list-group-item"> <a href="vw_catalogo.php?idcat=<?php echo $fila->idcategorias; ?>"><?php echo $fila->nombre; ?></a></li>
+            
+              <?php } ?>
+           </ul> 
+          </div>
+        </div><!-- /.col-lg-12 -->
       </div><!-- /.row -->
       <hr class="featurette-divider">
         <!-- Modal Nuevo -->

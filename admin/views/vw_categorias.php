@@ -4,7 +4,7 @@
           <div class="my-3 p-3 bg-white rounded shadow-sm">
         <!-- Button trigger modal -->
         <div align="right">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus" aria-hidden="true"></i> Agregar nueva pieza</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus" aria-hidden="true"></i> Agregar nueva estilo</button>
         </div>          
         <h4 class="border-bottom border-gray pb-2 mb-0">Estilos</h4> 
         <div class="table-responsive">
@@ -27,7 +27,7 @@
               
                 <td>
                 <a href="#" data-toggle="modal" data-target="#exampleModal<?php echo $fila->idcategorias; ?>"><i class="fa fa-pencil"></i></a>
-                <a href="../categorias/borrar.php?id=<?php echo $fila->idcategorias; ?>"  id="confirmacion"><i class="fa fa-trash-o"></i ></a>     
+                <a href="../categorias/borrar.php?id=<?php echo $fila->idcategorias; ?>"  class="confirmacion"><i class="fa fa-trash-o"></i ></a>     
                 </td>
                 </tr> 
 

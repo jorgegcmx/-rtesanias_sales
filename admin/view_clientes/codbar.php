@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -5,24 +6,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <script language="javascript">
-function imprimir()
-{ 
-  if ((navigator.appName == "Netscape")) {
-        window.print() ;
-       }else{            
-     var WebBrowser = '<OBJECT ID="WebBrowser1" WIDTH=0 HEIGHT=0 CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>';
-     document.body.insertAdjacentHTML('beforeEnd', WebBrowser); WebBrowser1.ExecWB(6, -1); WebBrowser1.outerHTML = "";
-       }
- 
-    setTimeout("window.location.href='vw_inventario.php'",100);
-     		 
+  
+<script>
+function printDiv(printdiv) {
+     var contenido= document.getElementById(printdiv).innerHTML;
+     var contenidoOriginal= document.body.innerHTML;
+     document.body.innerHTML = contenido;
+     window.print();
+     document.body.innerHTML = contenidoOriginal;
 }
 </script>
-
 </head>
 
-<body onload="imprimir();">
+<body>
+
+<a href="#" onclick="printDiv('areaImprimir')"> Imprimir</a>
+
+<div id="areaImprimir">
   <div align="center"><?php echo $_GET['nombre'];?></div>
 <table>
 <tr>
@@ -116,8 +116,9 @@ function imprimir()
 <td><svg id="barcode"></svg></td>
 </tr>
 </table>  
-
+</div>
 <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.3/dist/JsBarcode.all.min.js"></script>
+<script   src="https://code.jquery.com/jquery-2.2.4.min.js"  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="  crossorigin="anonymous"></script>
 <script>  
   JsBarcode("#barcode", "<?php echo $_GET['cod'];?>", {
   format: "codabar",

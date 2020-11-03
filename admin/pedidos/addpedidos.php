@@ -31,12 +31,15 @@ if (isset($_POST["rfc"])) {
 
 }
 
-if (isset($_POST["tipo"]) == 0) {
+
+
+if ($_POST["rfc"] == null) {
 
     $total = $_POST["subtotal"];
     $status = 'NF';
 } else {
-    $total = $_POST["totalconiva"];
+
+   $total = $_POST["totalconiva"];
     $status = 'F';
     $iva = $_POST["iva"];
 }
@@ -80,7 +83,7 @@ $pagacon = $_POST["pagacon"];
 
 if($pagacon != ''){
     $cambio=$pagacon-$total;
-}
+} 
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -97,7 +100,8 @@ if($pagacon != ''){
       title: 'Cambio: <?php echo$cambio; ?>',
       text: 'Continuar',
       icon: 'success',
-      confirmButtonText: 'ok'    
+      confirmButtonText: 'ok',
+      allowOutsideClick: false    
      }).then(resultado => {
         if (resultado.value) {
             let nombre = resultado.value;

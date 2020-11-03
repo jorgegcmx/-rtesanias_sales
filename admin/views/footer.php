@@ -2,8 +2,13 @@
  </div><!-- /.container -->
     <!-- FOOTER -->
     <footer class="container">
+      <p>
+      <a class="navbar-brand" href="#">
+          <img src="../../img/logo_pie.png" alt="ecologia" width="80px" higth="80px">
+        </a>
+      </p>
       <p class="float-right"><a href="#">Regresa al Inicio</a></p>
-      <p>&copy; <?php echo date('Y-m-d'); ?> punto de venta <a href="#">Salespiont</a> &middot; <a href="#"></a></p>
+      <p>&copy; <?php echo date('Y-m-d'); ?> punto de venta <a href="#">@rtesanias</a> &middot; <a href="#"></a></p>
     </footer>
   </main>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -20,20 +25,25 @@
 </script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <script>
 $(document).ready(function() {
     $('#example').DataTable();
 } );
 </script>
 <script>
-    $(document).on("click", "#confirmacion", function (e) {
-        var r = confirm("Esta seguro de eliminar el registro? esta acción no se podra reversar!");
-        if (r == true) {
-            window.location.href = link;
-        } else {
-            return false;
+$('a.confirmacion').confirm({
+    title: "Esta a punto de eliminar un registro!",
+    content: "Esta seguro de eliminar el registro? esta acción no se podra reversar!",
+    type: 'red',
+});
+$('a.confirmacion').confirm({
+    buttons: {
+        hey: function(){
+            location.href = this.$target.attr('href');
         }
-
-    });
+    }
+});
 </script>
 </html>

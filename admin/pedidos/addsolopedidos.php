@@ -67,7 +67,8 @@ unset($_SESSION['tipo']);
       title: 'Pedido Guardado',
       text: 'Continuar',
       icon: 'success',
-      confirmButtonText: 'ok'    
+      confirmButtonText: 'ok' ,
+      allowOutsideClick: false   
      }).then(resultado => {
         if (resultado.value) {
             let nombre = resultado.value;           

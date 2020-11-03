@@ -41,11 +41,13 @@
                   $stock_count = $st->cantidad;
                }
                
-               if($stock_count ===0){
+               if($stock_count == 0){
                  echo "<b style='color:red;'>0</b>";
-               }else{
-                 echo "<b>".$stock_count."</b>";
-               }    
+               }elseif($stock_count ==''){
+                echo "<b style='color:red;'>0</b>";
+               } else{
+                echo "<b>".$stock_count."</b>";
+               }   
                 ?>         
                 </div>                 
                 </td>
@@ -111,13 +113,12 @@
           <li class="list-group-item d-flex justify-content-between lh-condensed">
           <a href="../articulos/eliminarprocar.php?idcar=<?php echo $i; ?>"  id="confirmacion" ><b>X</b></a>  
           <div>
-                   
             <h6 class="my-0"><?php echo $p->nombre; ?></h6>            
             <small class="text-muted">Unit <b> $<?php echo $p->precio; ?></b></small>
             <small class="text-muted">Cantidad <b><?php echo $p->cantidad; ?></b></small>
           </div>
           <div>
-            <span class="text-muted">$<?php echo $p->subtotal; ?></span>
+          <span class="text-muted">$<?php echo $p->subtotal; ?></span>
           </div>         
            </li>
             <?php 
@@ -125,9 +126,9 @@
             $total+=$p->subtotal;
             $cantArticulos= $cantArticulos+ $p->cantidad;
             ?>
-       <?php   
-        }                   
-        ?>
+          <?php   
+            }                   
+            ?>
          <div id="contentimpuesto" style="display: none;">
          <li class="list-group-item d-flex justify-content-between">
           <span>IVA</span>
@@ -166,7 +167,7 @@
            <input type='hidden' class='form-control'value='V' name='modulo'>
            <input type='hidden' class='form-control'value='<?php echo $idclientes; ?>' name='idcliente'>
            <input type='hidden' class='form-control'value='<?php echo $subtotal; ?>' name='subtotal'>
-           <input type='hidden' class='form-control'value='<?php echo $total; ?>' name='totalconiva'>
+           <input type='hidden' class='form-control'value='<?php echo $subtotal + $IVA; ?>' name='totalconiva'>
 					 </div>	
           </div>                    
         </li>

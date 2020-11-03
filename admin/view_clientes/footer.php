@@ -1,6 +1,11 @@
  </div><!-- /.container -->
     <!-- FOOTER -->
     <footer class="container">
+    <p>
+    <a class="navbar-brand" href="#">
+          <img src="../../img/logo_pie.png" alt="ecologia" width="80px" higth="80px">
+        </a>
+    </p>    
       <p class="float-right"><a href="#">Regresa al Inicio</a></p>
       <p>&copy; <?php echo date('Y-m-d'); ?> punto de venta <a href="#">@rtesanias</a> &middot; <a href="#"></a></p>
     </footer>
@@ -23,6 +28,8 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 
 <script>
 $(document).ready(function() {
@@ -31,25 +38,17 @@ $(document).ready(function() {
 </script>
 
 <script>
-    $('.confirmacion').click(function(e) {  
-      e.preventDefault();
-      Swal.fire({
-      title: 'Esta seguro de eliminar el registro? esta acción no se podra reversar!',
-      text: 'Continuar',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Aceptar',      
-      cancelButtonText: "Cancelar",
-     }).then(resultado => {
-        if (resultado.value) {    
-           const v = resultado.value
-           console.log(v);           
-            $( ".confirmacion" ).submit();
-        } else {            
-            return false;
-           
+$('a.confirmacion').confirm({
+    title: "Esta a punto de eliminar un registro!",
+    content: "Esta seguro de eliminar el registro? esta acción no se podra reversar!",
+    type: 'red',
+});
+$('a.confirmacion').confirm({
+    buttons: {
+        hey: function(){
+            location.href = this.$target.attr('href');
         }
-    });
+    }
 });
 </script>
 

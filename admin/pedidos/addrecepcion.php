@@ -12,7 +12,18 @@ $total = 0;
 $idcliente = $_POST["idcliente"];
 $iva = 0;
 $modulo = $_POST["modulo"];
-$status = 'R';
+$tipo = $_POST["tipo"];
+
+if ($tipo == 1) {
+    $status = 'R';
+    $location = '../view_clientes/vw_entradas.php';
+    $mensage = 'recepción';
+} else {
+    $status = 'S';
+    $location = '../view_clientes/vw_salidas.php';
+    $mensage = 'salida';
+}
+
 $total = $_POST["subtotal"];
 $almacen = $_POST["almacen"];
 $sucursal = "0"; //para venta no aplica
@@ -49,9 +60,13 @@ foreach ($carrito as $p) {
     while ($exis = $existe->fetchObject()) {
         $idinventario = $exis->idinventario;
     }
-
-    $save3->set_recepcion($idinventario, $p->idproductos, $almacen, $p->cantidad, $idcliente);
-    $sql3 = $save3->insert_recepcion();
+    if ($tipo == 1) {
+        $save3->set_recepcion($idinventario, $p->idproductos, $almacen, $p->cantidad, $idcliente);
+        $sql3 = $save3->insert_recepcion();
+    } else {
+        $save3->set_menos_venta($p->cantidad, $idcliente, $p->idproductos);
+        $sql3 = $save3->insert_menos_venta();
+    }
 
     $save->set_detalle_pedidos(null, $p->idproductos, $p->cantidad, $p->subtotal, $p->precio, $ultimo, $p->comentario);
     $sql = $save->add_detalle_pedidos();
@@ -72,15 +87,16 @@ unset($_SESSION['tipo']);
 </head>
 <body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script type='text/javascript'>                
+<script type='text/javascript'>
   Swal.fire({
-      title: 'Se guardo la recepción',
+      title: 'Se guardo la <?php echo $mensage; ?>',
       text: 'Continuar',
       icon: 'success',
-      confirmButtonText: 'ok'    
+      confirmButtonText: 'ok',
+      allowOutsideClick: false
      }).then(resultado => {
         if (resultado.value) {
-           window.location.href='../view_clientes/vw_entradas.php';
+           window.location.href='<?php echo $location; ?>';
         }
     });
 </script>

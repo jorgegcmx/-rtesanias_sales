@@ -48,4 +48,44 @@ class Usuario
         }
     }
 
+    public function get_admin($correo)
+    {
+        try
+        {
+            $sql = "SELECT * FROM usuarios where email = ? ";
+
+            $consulta = $this->con->prepare($sql);
+            $consulta->bindParam(1, $correo);
+            $consulta->execute();
+            $this->con = null;
+
+            if ($consulta->rowCount() > 0) {
+                 return $consulta;
+            } else {
+                return false;
+            } //fin else
+        } catch (PDOExeption $e) {
+            print "Error:" . $e->getmessage();
+        }
+    }
+
+    public function add_password($password,$email)
+    {
+        try {
+            
+            $sql = "UPDATE usuarios SET contrasena = ? WHERE md5(email) =? ";                 
+            
+            $consulta = $this->con->prepare($sql);
+            $consulta->bindparam(1, $password);
+            $consulta->bindparam(2, $email);          
+
+            $consulta->execute();
+            return $sql;
+            $this->con = null;
+
+        } catch (PDOEception $ex) {
+            print "Error:" . $e->getMessage();
+        }
+    }
+
 }

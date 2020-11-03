@@ -24,10 +24,14 @@ $email=$_SESSION['email'];
     <!-- Custom styles for this template -->
   <link href="../css/carousel.css" rel="stylesheet">
   <link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../../img/logo_top.png">
 </head>
 <body>
   <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">
+          <img src="../../img/logo_top.png" alt="ecologia" width="30px" higth="30px">
+        </a>
       <a class="navbar-brand" href="#">@rtesanias</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,12 +43,12 @@ $email=$_SESSION['email'];
             <a class="nav-link" href="index.php"><span class="sr-only"></span>Sucursales</a>
           </li> 
           <li class="nav-item active">
-            <a class="nav-link" href="vw_categorias.php"><span class="sr-only"></span>Categorias</a>
+            <a class="nav-link" href="vw_categorias.php"><span class="sr-only"></span>Estilos</a>
           </li> 
           <li class="nav-item active">
             <a class="nav-link" href="vw_catalogo.php"><span class="sr-only"></span>Catalogo de Piezas</a>
-          </li>         
-        </ul>
+          </li>
+         </ul>
         <a class="btn btn-outline-primary my-2 my-sm-0" style="color: beige; border-color:beige ;" href="../../login_admin/logout.php"<?php echo $_SESSION['idusuarios']; ?>>Salir</a>
       </div>
     </nav>
